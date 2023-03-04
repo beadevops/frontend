@@ -8,7 +8,7 @@
               <b-card-body>
                 <validation-observer tag="form" v-slot="{ passes }">
                   <b-form @submit.prevent.stop="passes(login)">
-                    <h1>{{ $t('message.login') }}</h1>
+                    <h1>DevSecOps Efficiency Platform</h1>
                     <p class="text-muted">{{ $t('message.login_desc') }}</p>
                     <b-validated-input-group-form-input
                       id="username"

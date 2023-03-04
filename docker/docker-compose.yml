@@ -7,7 +7,7 @@ services:
   dtrack-apiserver:
     image: dependencytrack/apiserver:snapshot
     ports:
-      - "8081:8080"
+      - "8085:8080"
     volumes:
       - "dependency-track-data:/data"
     restart: unless-stopped
@@ -17,7 +17,7 @@ services:
     depends_on:
       - dtrack-apiserver
     environment:
-      - "API_BASE_URL=http://localhost:8081"
+      - "API_BASE_URL=http://127.0.0.1:8085"
       # - "OIDC_ISSUER="
       # - "OIDC_CLIENT_ID="
       # - "OIDC_SCOPE="
@@ -26,6 +26,6 @@ services:
     # volumes:
       # - "/host/path/to/config.json:/app/static/config.json"
     ports:
-      - "8080:8080"
+      - "8084:8084"
     restart: unless-stopped
 
