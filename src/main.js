@@ -31,7 +31,7 @@ Vue.use(VueToastr, {
   defaultCloseOnHover: false
 });
 Vue.use(vueDebounce, { defaultTime: '750ms' });
-Vue.use(VuePageTitle, { prefix: 'Dependency-Track -', router });
+Vue.use(VuePageTitle, { prefix: 'DevSecOps -', router });
 
 Vue.prototype.$api = api;
 Vue.prototype.$oidc = oidc;
