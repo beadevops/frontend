@@ -2,11 +2,13 @@
   <b-row>
     <b-col sm="6" lg="3">
       <b-card no-body class="bg-widget">
+         <dv-border-box-12>
         <b-card-body class="pb-0">
           <h4 class="mb-0">{{ portfolioVulnerabilities }}</h4>
           <p>{{ $t('message.portfolio_vulnerabilities') }}</p>
         </b-card-body>
         <widget-portfolio-vulnerabilities ref="widgetPortfolioVulnerabilities" chartId="card-chart-01" class="chart-wrapper px-3" style="height:70px;" :height="70"/>
+       </dv-border-box-12>
       </b-card>
     </b-col>
     <b-col sm="6" lg="3">

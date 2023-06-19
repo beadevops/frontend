@@ -1,6 +1,34 @@
 <template>
   <div class="animated fadeIn" v-permission="'VIEW_PORTFOLIO'">
     <portfolio-widget-row ref="portfolioWidgetRow" />
+    <div slot="footer">
+      <dv-border-box-10>
+        <b-row class="text-center">
+          
+          <b-col class="mb-sm-2 mb-0">
+            <div class="text-muted">{{ $t('message.vulnerable_projects') }}</div>
+            <div id="vulnerable_projects" style="margin: 0 auto 0;width:100px;height:100px;"></div>
+            <strong>{{vulnerableProjects}} ({{vulnerableProjectPercent}}%)</strong>
+          </b-col>
+          <b-col class="mb-sm-2 mb-0 d-md-down-none">
+            <div class="text-muted">{{ $t('message.violations_audited') }}</div>
+            <div id="violations_audited" style="margin: 0 auto 0;width:100px;height:100px;"></div>
+            <strong>{{auditedViolations}} ({{auditedViolationsPercent}}%)</strong>
+          </b-col>
+          <b-col class="mb-sm-2 mb-0">
+            <div class="text-muted">{{ $t('message.vulnerable_components') }}</div>
+            <div id="vulnerable_components" style="margin: 0 auto 0;width:100px;height:100px;"></div>
+            <strong>{{vulnerableComponents}} ({{vulnerableComponentPercent}}%)</strong>
+          </b-col>
+          <b-col class="mb-sm-2 mb-0">
+            <div class="text-muted">{{ $t('message.findings_audited') }}</div>
+            <div id="findings_audited" style="margin: 0 auto 0;width:100px;height:100px;"></div>
+            <strong>{{auditedFindings}} ({{auditedFindingPercent}}%)</strong>
+          </b-col>
+          
+        </b-row>
+        </dv-border-box-10>
+      </div>
     <b-card>
       <b-row>
         <b-col sm="5">
@@ -13,30 +41,6 @@
         </b-col>
       </b-row>
       <chart-portfolio-vulnerabilities ref="chartPortfolioVulnerabilities" chartId="chartPortfolioVulnerabilities" class="chart-wrapper" style="height:200px;margin-top:40px;" :height="200"></chart-portfolio-vulnerabilities>
-      <div slot="footer">
-        <b-row class="text-center">
-          <b-col class="mb-sm-2 mb-0">
-            <div class="text-muted">{{ $t('message.vulnerable_projects') }}</div>
-            <strong>{{vulnerableProjects}} ({{vulnerableProjectPercent}}%)</strong>
-            <b-progress height={} class="progress-xs mt-2" :precision="1" variant="success" v-bind:value="vulnerableProjectPercent"></b-progress>
-          </b-col>
-          <b-col class="mb-sm-2 mb-0 d-md-down-none">
-            <div class="text-muted">{{ $t('message.violations_audited') }}</div>
-            <strong>{{auditedViolations}} ({{auditedViolationsPercent}}%)</strong>
-            <b-progress height={} class="progress-xs mt-2" :precision="1" variant="info" v-bind:value="auditedViolationsPercent"></b-progress>
-          </b-col>
-          <b-col class="mb-sm-2 mb-0">
-            <div class="text-muted">{{ $t('message.vulnerable_components') }}</div>
-            <strong>{{vulnerableComponents}} ({{vulnerableComponentPercent}}%)</strong>
-            <b-progress height={} class="progress-xs mt-2" :precision="1" variant="warning" v-bind:value="vulnerableComponentPercent"></b-progress>
-          </b-col>
-          <b-col class="mb-sm-2 mb-0">
-            <div class="text-muted">{{ $t('message.findings_audited') }}</div>
-            <strong>{{auditedFindings}} ({{auditedFindingPercent}}%)</strong>
-            <b-progress height={} class="progress-xs mt-2" :precision="1" variant="danger" v-bind:value="auditedFindingPercent"></b-progress>
-          </b-col>
-        </b-row>
-      </div>
     </b-card>
 
     <b-row>
@@ -147,6 +151,7 @@
   import ChartComponentVulnerabilities from "./dashboard/ChartComponentVulnerabilities";
   import { Callout } from '@coreui/vue'
   import permissionsMixin from "../mixins/permissionsMixin";
+  import $ from "jquery";
 
   export default {
     name: 'dashboard',
@@ -192,18 +197,35 @@
         this.totalProjects = common.valueWithDefault(metric.projects, "0");
         this.vulnerableProjects = common.valueWithDefault(metric.vulnerableProjects, "0");
         this.vulnerableProjectPercent = common.calcProgressPercent(this.totalProjects, this.vulnerableProjects);
+        // 动态仪表盘
+        $("#vulnerable_projects").html('');
+        $("#vulnerable_projects").lu_word(this.$t('message.vulnerable_projects'),2);
+        $("#vulnerable_projects").setWord(this.vulnerableProjectPercent/100, this.vulnerableProjectPercent/100);
 
         this.totalComponents = common.valueWithDefault(metric.components, "0");
         this.vulnerableComponents = common.valueWithDefault(metric.vulnerableComponents, "0");
         this.vulnerableComponentPercent = common.calcProgressPercent(this.totalComponents, this.vulnerableComponents);
+        // 动态仪表盘
+        $("#vulnerable_components").html('');
+        $("#vulnerable_components").lu_word(this.$t('message.vulnerable_components'),3);
+        $("#vulnerable_components").setWord(this.vulnerableComponentPercent/100, this.vulnerableComponentPercent/100);
 
+        this.totalComponents = common.valueWithDefault(metric.components, "0");
         this.totalFindings = common.valueWithDefault(metric.findingsTotal, "0");
         this.auditedFindings = common.valueWithDefault(metric.findingsAudited, "0");
         this.auditedFindingPercent = common.calcProgressPercent(this.findingsTotal, this.findingsAudited);
-
+        // 动态仪表盘
+        $("#findings_audited").html('');
+        $("#findings_audited").lu_word(this.$t('message.findings_audited'),4);
+        $("#findings_audited").setWord(this.auditedFindingPercent/100, this.auditedFindingPercent/100);
+        
         this.totalViolations = common.valueWithDefault(metric.policyViolationsTotal, "0");
         this.auditedViolations = common.valueWithDefault(metric.policyViolationsAudited, "0");
         this.auditedViolationsPercent = common.calcProgressPercent(this.policyViolationsTotal, this.policyViolationsAudited);
+        // 动态仪表盘
+        $("#violations_audited").html('');
+        $("#violations_audited").lu_word(this.$t('message.violations_audited'),5);
+        $("#violations_audited").setWord(this.auditedViolationsPercent/100, this.auditedViolationsPercent/100);
 
         this.vulnerabilities = common.valueWithDefault(metric.vulnerabilities, "0");
         this.suppressed = common.valueWithDefault(metric.suppressed, "0");

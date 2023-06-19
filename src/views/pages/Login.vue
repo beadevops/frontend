@@ -4,18 +4,26 @@
       <b-row class="justify-content-center">
         <b-col md="8">
           <b-card-group>
+            <b-card no-body class="text-white bg-grey-900 py-5 d-md-down-none" style="width:44%">
+              <b-card-body class="text-center">
+                <div>
+                  <img src="@/assets/img/brand/dt-logo-vertical-white-text.svg" width="100%" />
+                </div>
+              </b-card-body>
+            </b-card>
             <b-card no-body class="p-4">
+              <dv-border-box-7 style="margin: 0 auto;width:338px;height:387px;">
               <b-card-body>
                 <validation-observer tag="form" v-slot="{ passes }">
                   <b-form @submit.prevent.stop="passes(login)">
-                    <h5>DevSecOps Efficiency Platform</h5>
-                    <p class="text-muted">{{ $t('message.login_desc') }}</p>
+                    <h5>东亚银行·青追漏洞管理平台</h5>
+                    <p>{{ $t('message.login_desc') }}</p>
                     <b-validated-input-group-form-input
                       id="username"
                       :label="$t('message.username')"
                       input-group-size="mb-3"
                       rules="required"
-                      icon="icon-user"
+                      icon="icon-emotsmile"
                       type="text"
                       autocomplete="username email"
                       v-model="input.username"
@@ -27,7 +35,7 @@
                       :label="$t('message.password')"
                       input-group-size="mb-3"
                       rules="required"
-                      icon="icon-lock"
+                      icon="icon-login"
                       type="password"
                       autcomplete="currentpassword"
                       v-model="input.password"
@@ -35,8 +43,8 @@
                     />
                     <b-row>
                       <b-col cols="6">
-                        <b-button
-                          variant="primary"
+                        <b-button block
+                          variant="outline-primary"
                           type="submit"
                           class="px-4"
                         >{{ $t('message.login') }}</b-button>
@@ -51,18 +59,19 @@
                   </b-form>
                 </validation-observer>
               </b-card-body>
-            </b-card>
-            <b-card no-body class="text-white bg-grey-900 py-5 d-md-down-none" style="width:44%">
-              <b-card-body class="text-center">
-                <div>
-                  <img src="@/assets/img/brand/dt-logo-vertical-white-text.svg" width="100%" />
-                </div>
-              </b-card-body>
+               </dv-border-box-7>
             </b-card>
           </b-card-group>
         </b-col>
       </b-row>
     </div>
+    
+    <!-- <dv-decoration-9  :color="['red', 'green']" style="width:150px;height:150px;">66%</dv-decoration-9> -->
+    <!--<button style="width:100px;height:50px;" @click="test()">触发</button>
+     <div id="test" style="width:100px;height:100px;">
+    </div>
+    <button style="width:100px;height:50px;" @click="test1()">触发</button>
+	 <div id="test1" style="width:100px;height:100px;"></div> -->
     <informational-modal v-bind:message="loginError" />
   </div>
 </template>
@@ -78,6 +87,7 @@ import InformationalModal from "../modals/InformationalModal";
 import EventBus from '../../shared/eventbus';
 import { getRedirectUrl } from '../../shared/utils';
 const qs = require("querystring");
+
 
 export default {
   name: "Login",
@@ -106,6 +116,39 @@ export default {
     };
   },
   methods: {
+    test() {
+      $("#test").html('')
+      let title = "螺柱焊合格率";
+      $("#test").lu_word(title,2)
+      //目标值
+      var progress = 88/100;
+      //参数1：仪表值<=1
+      //参数2：中间显示的值<=1
+      console.log("progress",progress);
+      $("#test").setWord(progress, progress);
+      // setTimeout(()=>{
+      //   $("#test1").html('')
+      // let title = "螺柱";
+      // $("#test1").lu_word(title,3)
+      // //目标值
+      // var progress1 = 66/100;
+      // //参数1：仪表值<=1
+      // //参数2：中间显示的值<=1
+      // console.log("progress",progress1);
+      // $("#test1").setWord(progress1, progress1);
+      // },2000);
+    },
+    test1(){
+         $("#test1").html('')
+      let title = "螺柱";
+      $("#test1").lu_word(title,3)
+      //目标值
+      var progress1 = 66/100;
+      //参数1：仪表值<=1
+      //参数2：中间显示的值<=1
+      console.log("progress",progress1);
+      $("#test1").setWord(progress1, progress1);
+    },
     login() {
       const url = this.$api.BASE_URL + "/" + this.$api.URL_LOGIN;
       const requestBody = {

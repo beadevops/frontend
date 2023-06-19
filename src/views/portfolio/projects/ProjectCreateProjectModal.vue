@@ -63,7 +63,7 @@
       </b-tab>
       <!--
       <b-tab>
-        <template v-slot:title><i class="fa fa-balance-scale"></i> {{ $t('message.legal') }}</template>
+        <template v-slot:title><i class="fa fa-credit-card"></i> {{ $t('message.legal') }}</template>
         <b-card>
           <b-input-group-form-select id="project-license-input" required="false"
                                      v-model="selectedLicense" :options="selectableLicenses"

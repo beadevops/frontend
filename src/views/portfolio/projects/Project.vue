@@ -4,7 +4,7 @@
       <b-card-body class="p-3 clearfix">
         <b-row>
           <b-col>
-            <i class="fa fa-sitemap bg-primary p-3 font-2xl mr-3 float-left"></i>
+            <i class="fa fa-dropbox bg-primary p-3 font-2xl mr-3 float-left"></i>
             <div class="h5 mb-0 mt-2">
               {{ project.name }}
               <ol v-if="project.version" style="display: inline-block; margin: 0; list-style-type: none; padding-inline-start: 0">
@@ -101,7 +101,7 @@
         <project-dashboard :key="this.uuid" :uuid="this.uuid" :project="this.project" style="border-left: 0; border-right:0; border-top:0 "/>
       </b-tab>
       <b-tab ref="components" @click="routeTo('components')">
-        <template v-slot:title><i class="fa fa-cubes"></i> {{ $t('message.components') }} <b-badge variant="tab-total">{{ totalComponents }}</b-badge></template>
+        <template v-slot:title><i class="fa fa-snowflake-o"></i> {{ $t('message.components') }} <b-badge variant="tab-total">{{ totalComponents }}</b-badge></template>
         <project-components :key="this.uuid" :uuid="this.uuid" v-on:total="totalComponents = $event" />
       </b-tab>
       <b-tab ref="services" @click="routeTo('services')">
@@ -109,7 +109,7 @@
         <project-services :key="this.uuid" :uuid="this.uuid" v-on:total="totalServices = $event" />
       </b-tab>
       <b-tab ref="dependencygraph" @click="routeTo('dependencyGraph')">
-        <template v-slot:title><i class="fa fa-sitemap"></i> {{ $t('message.dependency_graph') }} <b-badge variant="tab-total">{{ totalDependencyGraphs }}</b-badge></template>
+        <template v-slot:title><i class="fa fa-dropbox"></i> {{ $t('message.dependency_graph') }} <b-badge variant="tab-total">{{ totalDependencyGraphs }}</b-badge></template>
         <project-dependency-graph :key="this.uuid" :uuid="this.uuid" :project="this.project" v-on:total="totalDependencyGraphs = $event" />
       </b-tab>
       <b-tab ref="findings" v-if="isPermitted(PERMISSIONS.VIEW_VULNERABILITY)" @click="routeTo('findings')">

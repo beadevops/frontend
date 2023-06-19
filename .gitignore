@@ -26,3 +26,9 @@ yarn-error.log*
 
 # Generates as part of serve
 src/version.json
+.history/
+
+bom.json
+bom.xml
+package-lock.json
+vue.config.js

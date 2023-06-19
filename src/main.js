@@ -20,6 +20,11 @@ import api from "./shared/api.json";
 import oidc from "./shared/oidc.json";
 import version from "./version";
 import { getContextPath } from "./shared/utils";
+// DashBoard  middle chart style
+import './mixins/gauge.js'
+// 将自动注册所有组件为全局组件
+import dataV from '@jiaminghi/data-view'
+Vue.use(dataV)
 
 Vue.use(BootstrapVue);
 Vue.use(VueAxios, axios);
@@ -33,6 +38,7 @@ Vue.use(VueToastr, {
 Vue.use(vueDebounce, { defaultTime: '750ms' });
 Vue.use(VuePageTitle, { prefix: 'DevSecOps -', router });
 
+//Vue.prototype.$ = $;
 Vue.prototype.$api = api;
 Vue.prototype.$oidc = oidc;
 const contextPath = getContextPath();

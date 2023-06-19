@@ -2,7 +2,7 @@
   <div>
     <div class="progress-group">
       <div class="progress-group-header">
-        <i class="fa fa-shield fa-fw progress-group-icon"></i>
+        <i class="fa fa-bug fa-fw progress-group-icon"></i>
         <span class="title">{{ $t('message.security_risk') }}</span>
         <span class="ml-auto font-weight-bold">{{ securityCount }} <span class="text-muted small">({{ securityPercent }}%)</span></span>
       </div>
@@ -12,7 +12,7 @@
     </div>
     <div class="progress-group">
       <div class="progress-group-header">
-        <i class="fa fa-balance-scale fa-fw progress-group-icon"></i>
+        <i class="fa fa-credit-card fa-fw progress-group-icon"></i>
         <span class="title">{{ $t('message.license_risk') }}</span>
         <span class="ml-auto font-weight-bold">{{ licenseCount }} <span class="text-muted small">({{ licensePercent }}%)</span></span>
       </div>

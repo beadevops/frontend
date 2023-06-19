@@ -56,7 +56,7 @@
         {
           name: this.$t('message.dashboard'),
           url: '/dashboard',
-          icon: 'icon-speedometer',
+          icon: 'fa fa-dashboard',
           permission: permissions.VIEW_PORTFOLIO
         },
         {
@@ -72,25 +72,25 @@
         {
           name: this.$t('message.projects'),
           url: '/projects',
-          icon: 'fa fa-sitemap',
+          icon: 'fa fa-dropbox',
           permission: permissions.VIEW_PORTFOLIO
         },
         {
           name: this.$t('message.components'),
           url: '/components',
-          icon: 'fa fa-cubes',
+          icon: 'fa fa-snowflake-o',
           permission: permissions.VIEW_PORTFOLIO
         },
         {
           name: this.$t('message.vulnerabilities'),
           url: '/vulnerabilities',
-          icon: 'fa fa-shield',
+          icon: 'fa fa-bug',
           permission: permissions.VIEW_PORTFOLIO
         },
         {
           name: this.$t('message.licenses'),
           url: '/licenses',
-          icon: 'fa fa-balance-scale',
+          icon: 'fa fa-credit-card',
           permission: permissions.VIEW_PORTFOLIO
         },
         {
@@ -106,7 +106,7 @@
         {
           name: this.$t('message.policy_management'),
           url: '/policy',
-          icon: 'fa fa-list-alt',
+          icon: 'fa fa-th',
           permission: permissions.POLICY_MANAGEMENT
         },
         {

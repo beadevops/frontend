@@ -1,18 +1,18 @@
 // stylelint-disable
-$grey-base:  #020304 !default;
+$grey-base:  #21304C !default;
 /* $grey-base:  #181b1e !default; */
 /* $grey-base:  #06080A !default; */
 /* $grey-base:  #050607 !default; */
 $grey-100:   lighten($grey-base, 85%);
-$grey-200:   lighten($grey-base, 80%);
+$grey-200:   #e9cdb3 !default;
 $grey-300:   lighten($grey-base, 70%);
 $grey-400:   lighten($grey-base, 60%);
 $grey-500:   lighten($grey-base, 50%);
 $grey-600:   lighten($grey-base, 40%);
 $grey-650:   lighten($grey-base, 25%);
-$grey-700:   lighten($grey-base, 15%);
-$grey-750:   lighten($grey-base, 12.5%);
-$grey-800:   lighten($grey-base, 10%);
+$grey-700:   #21304C !default;
+$grey-750:   lighten($grey-base, 10.5%);
+$grey-800:   lighten($grey-base, 8%);
 $grey-850:   lighten($grey-base, 7.5%);
 $grey-900:   lighten($grey-base, 5%);
 
@@ -20,7 +20,7 @@ $secondary:  $grey-600 !default;
 
 $white:      #fff;
 
-$blue:       #20a8d8 !default;
+$blue:       #e9cdb3 !default;
 $red:        #f86c6b !default;
 $orange:     #fd8c00 !default;
 $yellow:     #ffc107 !default;
