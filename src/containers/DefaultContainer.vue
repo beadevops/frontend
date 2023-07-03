@@ -184,3 +184,13 @@
     }
   }
 </script>
+<style>
+  .sidebar-minimized .sidebar .nav-item:hover > .nav-link {
+    background-color: #21304C !important;
+  }
+  .sidebar .nav-link:hover {
+    background-color: #21304C !important;
+  }
+
+
+</style>

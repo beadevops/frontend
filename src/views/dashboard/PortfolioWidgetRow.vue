@@ -1,44 +1,50 @@
 <template>
-  <b-row>
-    <b-col sm="6" lg="3">
-      <b-card no-body class="bg-widget">
-         <dv-border-box-12>
-        <b-card-body class="pb-0">
-          <h4 class="mb-0">{{ portfolioVulnerabilities }}</h4>
+  <div class="top-nav">
+    <div class="item">
+      <dv-border-box-12>
+        <div class="item-left">
+          <img src="../../../public/images/AccumulatedProject.svg" alt="">
+        </div>
+        <div class="item-right">
           <p>{{ $t('message.portfolio_vulnerabilities') }}</p>
-        </b-card-body>
-        <widget-portfolio-vulnerabilities ref="widgetPortfolioVulnerabilities" chartId="card-chart-01" class="chart-wrapper px-3" style="height:70px;" :height="70"/>
-       </dv-border-box-12>
-      </b-card>
-    </b-col>
-    <b-col sm="6" lg="3">
-      <b-card no-body class="bg-widget">
-        <b-card-body class="pb-0">
-          <h4 class="mb-0">{{ vulnerableProjects }}</h4>
+          <h4 class="mb-0">{{ portfolioVulnerabilities }}</h4>
+        </div>
+      </dv-border-box-12>
+    </div>
+    <div class="item">
+      <dv-border-box-12>
+        <div class="item-left">
+          <img src="../../../public/images/Risk.svg" alt="">
+        </div>
+        <div class="item-right">
           <p>{{ $t('message.projects_at_risk') }}</p>
-        </b-card-body>
-        <widget-projects-at-risk ref="widgetPortfolioVulnerableProjects" chartId="card-chart-02" class="chart-wrapper px-3" style="height:70px;" :height="70"/>
-      </b-card>
-    </b-col>
-    <b-col sm="6" lg="3">
-      <b-card no-body class="bg-widget">
-        <b-card-body class="pb-0">
-          <h4 class="mb-0">{{ vulnerableComponents }}</h4>
+          <h4 class="mb-0">{{ vulnerableProjects }}</h4>
+        </div>
+      </dv-border-box-12>
+    </div>
+    <div class="item">
+      <dv-border-box-12>
+        <div class="item-left">
+          <img src="../../../public/images/Vulnerable.svg" alt="">
+        </div>
+        <div class="item-right">
           <p>{{ $t('message.vulnerable_components') }}</p>
-        </b-card-body>
-        <widget-vulnerable-components ref="widgetPortfolioVulnerableComponents" chartId="card-chart-03" class="chart-wrapper px-3" style="height:70px;" :height="70"/>
-      </b-card>
-    </b-col>
-    <b-col sm="6" lg="3">
-      <b-card no-body class="bg-widget">
-        <b-card-body class="pb-0">
-          <h4 class="mb-0">{{ inheritedRiskScore }}</h4>
+          <h4 class="mb-0">{{ vulnerableComponents }}</h4>
+        </div>
+      </dv-border-box-12>
+    </div>
+    <div class="item">
+      <dv-border-box-12>
+        <div class="item-left">
+          <img src="../../../public/images/AccumulatedRisk.svg" alt="">
+        </div>
+        <div class="item-right">
           <p>{{ $t('message.inherited_risk_score') }}</p>
-        </b-card-body>
-        <widget-inherited-risk-score ref="widgetPortfolioInheritedRisk" chartId="card-chart-04" class="chart-wrapper px-3" style="height:70px;" :height="70"/>
-      </b-card>
-    </b-col>
-  </b-row>
+          <h4 class="mb-0">{{ inheritedRiskScore }}</h4>
+        </div>
+      </dv-border-box-12>
+    </div>
+</div>
 </template>
 
 <script>
@@ -83,12 +89,42 @@
         this.vulnerableProjects = metrics[metrics.length-1].vulnerableProjects;
         this.vulnerableComponents = metrics[metrics.length-1].vulnerableComponents;
         this.inheritedRiskScore = metrics[metrics.length-1].inheritedRiskScore;
-
-        this.$refs.widgetPortfolioVulnerabilities.render(metrics);
-        this.$refs.widgetPortfolioVulnerableProjects.render(metrics);
-        this.$refs.widgetPortfolioVulnerableComponents.render(metrics);
-        this.$refs.widgetPortfolioInheritedRisk.render(metrics);
       }
     }
   }
 </script>
+
+<style>
+  .top-nav {
+    background-image: -ms-linear-gradient();
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 1.5rem;
+  }
+  .top-nav .item {
+    width: 27rem;
+    height: 10rem;
+    background-color: #21304C;
+  }
+  .top-nav .item .border-box-content {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+  }
+  .top-nav .item .item-left {
+    width: 13rem;
+    height: 80%;
+    margin-right: 2rem;
+  }
+  .top-nav .item .item-left img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .top-nav .item .dv-border-box-12 .dv-border-svg-container {
+    display: none;
+  }
+</style>

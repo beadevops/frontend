@@ -1,34 +1,31 @@
 <template>
   <div class="animated fadeIn" v-permission="'VIEW_PORTFOLIO'">
+    <!--组件-->
     <portfolio-widget-row ref="portfolioWidgetRow" />
-    <div slot="footer">
-      <dv-border-box-10>
-        <b-row class="text-center">
-          
-          <b-col class="mb-sm-2 mb-0">
-            <div class="text-muted">{{ $t('message.vulnerable_projects') }}</div>
-            <div id="vulnerable_projects" style="margin: 0 auto 0;width:100px;height:100px;"></div>
-            <strong>{{vulnerableProjects}} ({{vulnerableProjectPercent}}%)</strong>
-          </b-col>
-          <b-col class="mb-sm-2 mb-0 d-md-down-none">
-            <div class="text-muted">{{ $t('message.violations_audited') }}</div>
-            <div id="violations_audited" style="margin: 0 auto 0;width:100px;height:100px;"></div>
-            <strong>{{auditedViolations}} ({{auditedViolationsPercent}}%)</strong>
-          </b-col>
-          <b-col class="mb-sm-2 mb-0">
-            <div class="text-muted">{{ $t('message.vulnerable_components') }}</div>
-            <div id="vulnerable_components" style="margin: 0 auto 0;width:100px;height:100px;"></div>
-            <strong>{{vulnerableComponents}} ({{vulnerableComponentPercent}}%)</strong>
-          </b-col>
-          <b-col class="mb-sm-2 mb-0">
-            <div class="text-muted">{{ $t('message.findings_audited') }}</div>
-            <div id="findings_audited" style="margin: 0 auto 0;width:100px;height:100px;"></div>
-            <strong>{{auditedFindings}} ({{auditedFindingPercent}}%)</strong>
-          </b-col>
-          
-        </b-row>
-        </dv-border-box-10>
-      </div>
+    <div slot="footer" style="margin-bottom: 1.5rem;background: #21304C;">
+      <b-row class="text-center">
+        <b-col class="mb-sm-2 mb-0">
+          <div class="text-muted">{{ $t('message.vulnerable_projects') }}</div>
+          <div id="vulnerable_projects" style="margin: 0 auto 0;width:100px;height:100px;"></div>
+          <strong>{{vulnerableProjects}} ({{vulnerableProjectPercent}}%)</strong>
+        </b-col>
+        <b-col class="mb-sm-2 mb-0 d-md-down-none">
+          <div class="text-muted">{{ $t('message.violations_audited') }}</div>
+          <div id="violations_audited" style="margin: 0 auto 0;width:100px;height:100px;"></div>
+          <strong>{{auditedViolations}} ({{auditedViolationsPercent}}%)</strong>
+        </b-col>
+        <b-col class="mb-sm-2 mb-0">
+          <div class="text-muted">{{ $t('message.vulnerable_components') }}</div>
+          <div id="vulnerable_components" style="margin: 0 auto 0;width:100px;height:100px;"></div>
+          <strong>{{vulnerableComponents}} ({{vulnerableComponentPercent}}%)</strong>
+        </b-col>
+        <b-col class="mb-sm-2 mb-0">
+          <div class="text-muted">{{ $t('message.findings_audited') }}</div>
+          <div id="findings_audited" style="margin: 0 auto 0;width:100px;height:100px;"></div>
+          <strong>{{auditedFindings}} ({{auditedFindingPercent}}%)</strong>
+        </b-col>
+      </b-row>
+    </div>
     <b-card>
       <b-row>
         <b-col sm="5">
@@ -40,35 +37,35 @@
         <b-col sm="7" class="d-none d-md-block">
         </b-col>
       </b-row>
-      <chart-portfolio-vulnerabilities ref="chartPortfolioVulnerabilities" chartId="chartPortfolioVulnerabilities" class="chart-wrapper" style="height:200px;margin-top:40px;" :height="200"></chart-portfolio-vulnerabilities>
+      <chart-portfolio-vulnerabilities v-if="true" ref="chartPortfolioVulnerabilities" chartId="chartPortfolioVulnerabilities" class="chart-wrapper" style="height:400px;margin-top:40px;" :height="400"></chart-portfolio-vulnerabilities>
     </b-card>
-
-    <b-row>
-      <b-col sm="6">
-        <b-card>
-          <b-row>
-            <b-col sm="5">
-              <h4 id="chart-violations" class="card-title mb-0">{{ $t('message.policy_violations') }}</h4>
-            </b-col>
-            <b-col sm="7" class="d-none d-md-block">
-            </b-col>
-          </b-row>
-          <chart-policy-violations ref="chartPolicyViolations" chartId="chartPolicyViolations" class="chart-wrapper" style="height:200px;margin-top:40px;" :height="200"></chart-policy-violations>
-        </b-card>
-      </b-col>
-      <b-col sm="6">
-        <b-card>
-          <b-row>
-            <b-col sm="5">
-              <h4 id="chart-auditing-progress" class="card-title mb-0">{{ $t('message.auditing_progress') }}</h4>
-            </b-col>
-            <b-col sm="7" class="d-none d-md-block">
-            </b-col>
-          </b-row>
-          <chart-audited-progress ref="chartAuditedProgress" chartId="chartAuditedProgress" class="chart-wrapper" style="height:200px;margin-top:40px;" :height="200"></chart-audited-progress>
-        </b-card>
-      </b-col>
-    </b-row>
+      <!--违反策略  审核进度 隐藏-->
+    <b-row v-show="false">
+       <b-col sm="6">
+         <b-card>
+           <b-row>
+             <b-col sm="5">
+               <h4 id="chart-violations" class="card-title mb-0">{{ $t('message.policy_violations') }}</h4>
+             </b-col>
+             <b-col sm="7" class="d-none d-md-block">
+             </b-col>
+           </b-row>
+           <chart-policy-violations ref="chartPolicyViolations" chartId="chartPolicyViolations" class="chart-wrapper" style="height:200px;margin-top:40px;" :height="200"></chart-policy-violations>
+         </b-card>
+       </b-col>
+       <b-col sm="6">
+         <b-card>
+           <b-row>
+             <b-col sm="5">
+               <h4 id="chart-auditing-progress" class="card-title mb-0">{{ $t('message.auditing_progress') }}</h4>
+             </b-col>
+             <b-col sm="7" class="d-none d-md-block">
+             </b-col>
+           </b-row>
+           <chart-audited-progress ref="chartAuditedProgress" chartId="chartAuditedProgress" class="chart-wrapper" style="height:200px;margin-top:40px;" :height="200"></chart-audited-progress>
+         </b-card>
+       </b-col>
+     </b-row>
 
     <b-row>
       <b-col sm="6">
@@ -80,7 +77,7 @@
             <b-col sm="7" class="d-none d-md-block">
             </b-col>
           </b-row>
-          <chart-project-vulnerabilities ref="chartProjectVulnerabilities" chartId="chartProjectVulnerabilities" class="chart-wrapper" style="height:200px;margin-top:40px;" :height="200"></chart-project-vulnerabilities>
+          <chart-project-vulnerabilities ref="chartProjectVulnerabilities" chartId="chartProjectVulnerabilities" class="chart-wrapper" style="height:300px;margin-top:30px;" :height="300"></chart-project-vulnerabilities>
         </b-card>
       </b-col>
       <b-col sm="6">
@@ -92,12 +89,11 @@
             <b-col sm="7" class="d-none d-md-block">
             </b-col>
           </b-row>
-          <chart-component-vulnerabilities ref="chartComponentVulnerabilities" chartId="chartComponentVulnerabilities" class="chart-wrapper" style="height:200px;margin-top:40px;" :height="200"></chart-component-vulnerabilities>
+          <chart-component-vulnerabilities ref="chartComponentVulnerabilities" chartId="chartComponentVulnerabilities" class="chart-wrapper" style="height:300px;margin-top:30px;" :height="300"></chart-component-vulnerabilities>
         </b-card>
       </b-col>
     </b-row>
-
-    <b-row>
+    <b-row class="dashboard-bottom">
       <b-col md="12">
         <b-card v-bind:header="$t('message.portfolio_statistics')">
           <b-row>
@@ -137,7 +133,6 @@
         </b-card>
       </b-col>
     </b-row>
-
   </div>
 </template>
 
@@ -218,7 +213,7 @@
         $("#findings_audited").html('');
         $("#findings_audited").lu_word(this.$t('message.findings_audited'),4);
         $("#findings_audited").setWord(this.auditedFindingPercent/100, this.auditedFindingPercent/100);
-        
+
         this.totalViolations = common.valueWithDefault(metric.policyViolationsTotal, "0");
         this.auditedViolations = common.valueWithDefault(metric.policyViolationsAudited, "0");
         this.auditedViolationsPercent = common.calcProgressPercent(this.policyViolationsTotal, this.policyViolationsAudited);
@@ -260,5 +255,17 @@
   /* IE fix */
   #card-chart-01, #card-chart-02 {
     width: 100% !important;
+  }
+  .animated-title {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    /*background-color: hotpink;*/
+  }
+  .dashboard-bottom .callout {
+   border-left: 20px solid #ff8f00 !important;
   }
 </style>

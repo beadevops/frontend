@@ -23,8 +23,8 @@
         <b-col sm="7" class="d-none d-md-block">
         </b-col>
       </b-row>
-      <chart-portfolio-vulnerabilities ref="chartProjectVulnerabilities" chartId="chartProjectVulnerabilities" class="chart-wrapper" style="height:200px;margin-top:40px;" :height="200"></chart-portfolio-vulnerabilities>
-      <div slot="footer">
+      <chart-portfolio-vulnerabilities ref="chartProjectVulnerabilities" chartId="chartProjectVulnerabilities" class="chart-wrapper" style="height:400px;margin-top:40px;" :height="400"></chart-portfolio-vulnerabilities>
+      <div slot="footer" class="ProjectDashboard">
         <b-row>
           <b-col sm="12" lg="4">
             <b-row>
@@ -82,15 +82,12 @@
         <b-card>
           <b-row>
             <b-col sm="5">
-              <h4 id="chart-policy-violations" class="card-title mb-0">{{ $t('message.policy_violations') }}</h4>
-              <div class="small text-muted">
-                {{$t('message.policy_violations_by_state')}}
-              </div>
+              <h4 id="chart-components" class="card-title mb-0">{{ $t('message.components') }}</h4>
             </b-col>
             <b-col sm="7" class="d-none d-md-block">
             </b-col>
           </b-row>
-          <chart-policy-violations ref="chartPolicyViolations" chartId="chartPolicyViolations" class="chart-wrapper" style="height:200px;margin-top:40px;" :height="200"></chart-policy-violations>
+          <chart-component-vulnerabilities ref="chartComponentVulnerabilities" chartId="chartComponentVulnerabilities" class="chart-wrapper" style="height:220px;margin-top:40px;" :height="300"></chart-component-vulnerabilities>
         </b-card>
       </b-col>
       <b-col sm="6">
@@ -109,19 +106,7 @@
         </b-card>
       </b-col>
     </b-row>
-    <b-row>
-      <b-col sm="6">
-        <b-card>
-          <b-row>
-            <b-col sm="5">
-              <h4 id="chart-components" class="card-title mb-0">{{ $t('message.components') }}</h4>
-            </b-col>
-            <b-col sm="7" class="d-none d-md-block">
-            </b-col>
-          </b-row>
-          <chart-component-vulnerabilities ref="chartComponentVulnerabilities" chartId="chartComponentVulnerabilities" class="chart-wrapper" style="height:200px;margin-top:40px;" :height="200"></chart-component-vulnerabilities>
-        </b-card>
-      </b-col>
+    <b-row v-show="false">
       <b-col sm="6">
         <b-card>
           <b-row>
@@ -132,6 +117,21 @@
             </b-col>
           </b-row>
           <chart-auditing-progress ref="chartAuditedProgress" chartId="chartAuditedProgress" class="chart-wrapper" style="height:200px;margin-top:40px;" :height="200"></chart-auditing-progress>
+        </b-card>
+      </b-col>
+      <b-col sm="6">
+        <b-card>
+          <b-row>
+            <b-col sm="5">
+              <h4 id="chart-policy-violations" class="card-title mb-0">{{ $t('message.policy_violations') }}</h4>
+              <div class="small text-muted">
+                {{$t('message.policy_violations_by_state')}}
+              </div>
+            </b-col>
+            <b-col sm="7" class="d-none d-md-block">
+            </b-col>
+          </b-row>
+          <chart-policy-violations ref="chartPolicyViolations" chartId="chartPolicyViolations" class="chart-wrapper" style="height:200px;margin-top:40px;" :height="200"></chart-policy-violations>
         </b-card>
       </b-col>
     </b-row>

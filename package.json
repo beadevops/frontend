@@ -34,6 +34,7 @@
     "core-js": "2.6.12",
     "css-vars-ponyfill": "2.4.7",
     "dompurify": "2.4.0",
+    "echarts": "^5.4.2",
     "font-awesome": "4.7.0",
     "imurmurhash": "^0.1.4",
     "jquery": "3.6.0",

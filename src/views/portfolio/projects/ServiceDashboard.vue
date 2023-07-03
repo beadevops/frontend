@@ -11,7 +11,7 @@
         <b-col sm="7" class="d-none d-md-block">
         </b-col>
       </b-row>
-      <chart-portfolio-vulnerabilities ref="chartServiceVulnerabilities" chartId="chartServiceVulnerabilities" class="chart-wrapper" style="height:200px;margin-top:40px;" :height="200"></chart-portfolio-vulnerabilities>
+      <chart-portfolio-vulnerabilities ref="chartServiceVulnerabilities" chartId="chartServiceVulnerabilities" class="chart-wrapper" style="height:400px;margin-top:40px;" :height="400"></chart-portfolio-vulnerabilities>
       <div slot="footer">
         <b-row>
           <b-col sm="12" lg="4">
