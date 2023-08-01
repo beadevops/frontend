@@ -28,9 +28,9 @@ export default {
         datasets: [
           {
             fill: false,
-            borderColor: 'rgba(166, 107, 248, 0.5)',
+            borderColor: 'rgba(101,223,140, 0.5)',
             borderWidth: 8,
-            backgroundColor: '#A66BF8',
+            backgroundColor: 'rgb(101,223,140)', // 点
             data: cveData
           }
         ]
@@ -45,14 +45,14 @@ export default {
               scaleLabel: {
                 display: true,
                 labelString: "CVSS",
-                fontColor: "#73818F",
+                fontColor: "#e9cdb3",
               },
               gridLines: {
                 color: '#1C2937',
                 zeroLineColor: '#1C2937'
               },
               ticks: {
-                fontColor: '#21A8D8',
+                fontColor: '#e9cdb3',
                 min: 0,
                 max: 10.0
               }
@@ -64,7 +64,7 @@ export default {
               scaleLabel: {
                 display: true,
                 labelString: "EPSS",
-                fontColor: "#73818F"
+                fontColor: "#e9cdb3"
               },
               gridLines: {
                 color: '#1C2937',
@@ -72,7 +72,7 @@ export default {
               },
               ticks: {
                 display: true,
-                fontColor: '#21A8D8',
+                fontColor: '#e9cdb3',
                 min: 0,
                 max: 1.0
               }

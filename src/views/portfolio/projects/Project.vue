@@ -1,5 +1,6 @@
 <template>
   <div class="animated fadeIn" v-permission="PERMISSIONS.VIEW_PORTFOLIO">
+    <!--11111-->
     <b-card :no-body="true" footer-class="px-3 py-2 card-footer-action">
       <b-card-body class="p-3 clearfix">
         <b-row>
@@ -27,7 +28,8 @@
           </b-col>
           <b-col>
             <b-row class="d-none d-md-flex float-right">
-              <vue-easy-pie-chart style="margin-right: 1rem"
+              <vue-easy-pie-chart class="allBGC first"
+                                  style="margin-right: 1rem"
                                   :bar-color="severityCritical"
                                   font-size="14px"
                                   :track-color="trackColor"
@@ -39,7 +41,8 @@
                                   :animate="true"
                                   v-b-tooltip.hover :title="$t('severity.critical')"
               >{{ currentCritical }}</vue-easy-pie-chart>
-              <vue-easy-pie-chart style="margin-right: 1rem"
+              <vue-easy-pie-chart class="allBGC second"
+                                  style="margin-right: 1rem;"
                                   :bar-color="severityHigh"
                                   font-size="14px"
                                   :track-color="trackColor"
@@ -51,7 +54,8 @@
                                   :animate="true"
                                   v-b-tooltip.hover :title="$t('severity.high')"
               >{{ currentHigh }}</vue-easy-pie-chart>
-              <vue-easy-pie-chart style="margin-right: 1rem"
+              <vue-easy-pie-chart class="allBGC third"
+                                  style="margin-right: 1rem;"
                                   :bar-color="severityMedium"
                                   font-size="14px"
                                   :track-color="trackColor"
@@ -63,7 +67,8 @@
                                   :animate="true"
                                   v-b-tooltip.hover :title="$t('severity.medium')"
               >{{ currentMedium }}</vue-easy-pie-chart>
-              <vue-easy-pie-chart style="margin-right: 1rem"
+              <vue-easy-pie-chart class="allBGC fourth"
+                                  style="margin-right: 1rem;"
                                   :bar-color="severityLow"
                                   font-size="14px"
                                   :track-color="trackColor"
@@ -75,7 +80,8 @@
                                   :animate="true"
                                   v-b-tooltip.hover :title="$t('severity.low')"
               >{{ currentLow }}</vue-easy-pie-chart>
-              <vue-easy-pie-chart style="margin-right: 1rem"
+              <vue-easy-pie-chart class="allBGC fifth"
+                                  style="margin-right: 1rem;"
                                   :bar-color="severityUnassigned"
                                   font-size="14px"
                                   :track-color="trackColor"
@@ -299,11 +305,41 @@
   };
 </script>
 
-<style scoped>
+<style>
   .overview-chart {
     padding: 0;
   }
   .badge {
     margin-right: .4rem;
+  }
+  /*--severity-critical: #f86c6b;*/
+  /*--severity-high: #fd8c00;*/
+  /*--severity-medium: #ffc107;*/
+  /*--severity-low: #4dbd74;*/
+  /*--severity-unassigned: #777777;*/
+  .allBGC .inner-text {
+    color: #fff !important;
+    border-radius: 0.4rem !important;
+    box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.06) !important;
+  }
+  .first .inner-text {
+    border-radius: 0.4rem !important;
+    background-color: #f86c6b !important;
+  }
+  .second .inner-text {
+    border-radius: 0.4rem !important;
+    background-color: #fd8c00 !important;
+  }
+  .third .inner-text {
+    border-radius: 0.4rem !important;
+    background-color: #ffc107 !important;
+  }
+  .fourth .inner-text {
+    border-radius: 0.4rem !important;
+    background-color: #4dbd74 !important;
+  }
+  .fifth .inner-text {
+    border-radius: 0.4rem !important;
+    background-color: #777777 !important;
   }
 </style>

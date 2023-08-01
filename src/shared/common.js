@@ -379,7 +379,7 @@ $common.formatTimestamp = function formatTimestamp(timestamp, includeTime) {
   if (includeTime) {
     return date.getFullYear() + " 年 " + date.getMonth() + " 月 " + date.getDate() + " 日 "  + pad(date.getHours()) + ":" + pad(date.getMinutes()) + ":" + pad(date.getSeconds());
   } else {
-    return date.getFullYear() + " 年 " + date.getMonth() + " 月 " + date.getDate() + " 日 ";
+    return date.getFullYear() + "/" + date.getMonth() + "/" + date.getDate();
   }
 };
 
