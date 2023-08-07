@@ -377,9 +377,11 @@ $common.formatTimestamp = function formatTimestamp(timestamp, includeTime) {
   let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   function pad(num) { return num < 10 ? "0" + num : num; }
   if (includeTime) {
-    return date.getFullYear() + " 年 " + date.getMonth() + " 月 " + date.getDate() + " 日 "  + pad(date.getHours()) + ":" + pad(date.getMinutes()) + ":" + pad(date.getSeconds());
+    let month = date.getMonth()+1;
+    return date.getFullYear() + " 年 " + month + " 月 " + date.getDate() + " 日 "  + pad(date.getHours()) + ":" + pad(date.getMinutes()) + ":" + pad(date.getSeconds());
   } else {
-    return date.getFullYear() + "/" + date.getMonth() + "/" + date.getDate();
+    let month = date.getMonth()+1;
+    return date.getFullYear() + "/" + month + "/" + date.getDate();
   }
 };
 
