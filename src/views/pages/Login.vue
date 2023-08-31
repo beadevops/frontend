@@ -1,5 +1,6 @@
 <template>
   <div class="app flex-row align-items-center">
+    <div class="logo"><img src="@/assets/img/loginLog.png" alt=""></div>
     <div class="container">
       <b-row class="justify-content-center">
         <b-col md="8">
@@ -65,7 +66,7 @@
         </b-col>
       </b-row>
     </div>
-    
+
     <!-- <dv-decoration-9  :color="['red', 'green']" style="width:150px;height:150px;">66%</dv-decoration-9> -->
     <!--<button style="width:100px;height:50px;" @click="test()">触发</button>
      <div id="test" style="width:100px;height:100px;">
@@ -283,3 +284,21 @@ export default {
   }
 };
 </script>
+
+<style>
+  .align-items-center {
+    position: relative;
+  }
+  .align-items-center .logo {
+    position: absolute;
+    top: 6%;
+    left: 30px;
+    width: 300px;
+  }
+  .align-items-center .logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+</style>
