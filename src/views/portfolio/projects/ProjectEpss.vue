@@ -75,6 +75,7 @@ export default {
                 return '<span style="float:right" data-toggle="tooltip" data-placement="bottom" title="Component version is the latest available from the configured repositories"><i class="fa fa-exclamation-triangle status-passed" aria-hidden="true"></i></span> ' + xssFilters.inHTMLData(row.component.version);
               }
             } else {
+              return '<span style="float:right" data-toggle="tooltip" data-placement="bottom" title="11111111111"><i class="fa fa-exclamation-triangle status-failed" aria-hidden="true"></i></span> ' + xssFilters.inHTMLData(row.version);
               return xssFilters.inHTMLData(common.valueWithDefault(value, ""));
             }
           }

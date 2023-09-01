@@ -23,7 +23,7 @@
         :tooltip="internalComponentIdentification.description"
       />
       <br/>
-      <h4>Vulnerability databases synchronization</h4>
+      <h4>漏洞数据库同步</h4>
       <b-validated-input-group-form-input
         id="ghsa_mirror"
         :label="$t('admin.github_advisories')"

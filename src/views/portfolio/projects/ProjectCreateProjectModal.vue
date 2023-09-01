@@ -36,7 +36,7 @@
           </b-form-group>
         </b-card>
       </b-tab>
-      <b-tab class="body-bg-color" style="border:0;padding:0">
+      <!-- <b-tab class="body-bg-color" style="border:0;padding:0">
         <template v-slot:title><i class="fa fa-cube"></i> {{ $t('message.identity') }}</template>
         <b-card>
           <b-input-group-form-input id="project-name-input-identify" input-group-size="mb-3" type="text" v-model="readOnlyProjectName"
@@ -60,7 +60,7 @@
                                     required="false" :label="$t('message.swid_tagid')"
                                     :tooltip="$t('message.component_swid_tagid_desc')" />
         </b-card>
-      </b-tab>
+      </b-tab> -->
       <!--
       <b-tab>
         <template v-slot:title><i class="fa fa-credit-card"></i> {{ $t('message.legal') }}</template>

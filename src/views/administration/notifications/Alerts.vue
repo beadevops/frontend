@@ -128,9 +128,9 @@
                       <c-switch id="notificationEnabled" color="primary" v-model="enabled" label v-bind="labelIcon"/>
                       {{ $t('admin.enabled') }}
                     </b-form-group>
-                    <b-form-group id="fieldset-2" :label="this.$t('admin.publisher_class')" label-for="input-2">
+                    <!--<b-form-group id="fieldset-2" :label="this.$t('admin.publisher_class')" label-for="input-2">
                       <b-form-input id="input-2" v-model="publisherClass" disabled class="form-control disabled" readonly trim />
-                    </b-form-group>
+                    </b-form-group>-->
                     <b-form-group id="fieldset-3" :label="this.$t('admin.notification_level')" label-for="input-3">
                       <b-form-input id="input-3" v-model="notificationLevel" disabled class="form-control disabled" readonly trim />
                     </b-form-group>
@@ -170,16 +170,18 @@
                     <b-form-group id="fieldset-6" :label="this.$t('admin.group')" label-for="input-6">
                       <div class="list-group" v-if="this.scope === 'PORTFOLIO'">
                         <b-form-checkbox-group id="checkbox-group-notify-on" v-model="notifyOn">
-                          <div class="list-group-item"><b-form-checkbox value="NEW_VULNERABILITY">NEW_VULNERABILITY</b-form-checkbox></div>
-                          <div class="list-group-item"><b-form-checkbox value="NEW_VULNERABLE_DEPENDENCY">NEW_VULNERABLE_DEPENDENCY</b-form-checkbox></div>
-                          <div class="list-group-item"><b-form-checkbox value="PROJECT_AUDIT_CHANGE">PROJECT_AUDIT_CHANGE</b-form-checkbox></div>
-                          <div class="list-group-item"><b-form-checkbox value="BOM_CONSUMED">BOM_CONSUMED</b-form-checkbox></div>
-                          <div class="list-group-item"><b-form-checkbox value="BOM_PROCESSED">BOM_PROCESSED</b-form-checkbox></div>
-                          <div class="list-group-item"><b-form-checkbox value="BOM_PROCESSING_FAILED">BOM_PROCESSING_FAILED</b-form-checkbox></div>
+                          <div class="list-group-item"><b-form-checkbox value="NEW_VULNERABILITY">发现新漏洞</b-form-checkbox></div>
+                          <div class="list-group-item"><b-form-checkbox value="NEW_VULNERABLE_DEPENDENCY">组件中存在漏洞</b-form-checkbox></div>
+                          <div class="list-group-item"><b-form-checkbox value="PROJECT_AUDIT_CHANGE">项目审核改变</b-form-checkbox></div>
+                          <div class="list-group-item"><b-form-checkbox value="BOM_CONSUMED">新BOM上传</b-form-checkbox></div>
+                          <div class="list-group-item"><b-form-checkbox value="BOM_PROCESSED">新BOM处理</b-form-checkbox></div>
+                          <div class="list-group-item"><b-form-checkbox value="BOM_PROCESSING_FAILED">BOM处理失败</b-form-checkbox></div>
+                          <!--
                           <div class="list-group-item"><b-form-checkbox value="VEX_CONSUMED">VEX_CONSUMED</b-form-checkbox></div>
                           <div class="list-group-item"><b-form-checkbox value="VEX_PROCESSED">VEX_PROCESSED</b-form-checkbox></div>
-                          <div class="list-group-item"><b-form-checkbox value="POLICY_VIOLATION">POLICY_VIOLATION</b-form-checkbox></div>
-                          <div class="list-group-item"><b-form-checkbox value="PROJECT_CREATED">PROJECT_CREATED</b-form-checkbox></div>
+                            -->
+                          <div class="list-group-item"><b-form-checkbox value="POLICY_VIOLATION">策略违反</b-form-checkbox></div>
+                          <div class="list-group-item"><b-form-checkbox value="PROJECT_CREATED">项目创建</b-form-checkbox></div>
                         </b-form-checkbox-group>
                       </div>
                       <div class="list-group" v-if="this.scope === 'SYSTEM'">

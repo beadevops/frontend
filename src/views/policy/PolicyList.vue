@@ -139,6 +139,7 @@
                       <c-switch id="isNotifyChildrenEnabled" color="primary" v-model="includeChildren" label v-bind="labelIcon"/>
                       {{ $t('admin.include_children') }}
                     </div>
+                    <!--  
                     <b-form-group v-if="limitToVisible === true" id="tagLimitsList" :label="this.$t('admin.limit_to_tags')">
                       <div class="list-group">
                         <span v-for="tag in tags">
@@ -147,6 +148,7 @@
                         <actionable-list-group-item :add-icon="true" v-on:actionClicked="$root.$emit('bv::show::modal', 'selectTagModal')"/>
                       </div>
                     </b-form-group>
+                    -->
                     <div style="text-align:right">
                       <b-toggleable-display-button variant="outline-primary" :label="$t('admin.limit_to')"
                           v-permission="PERMISSIONS.VIEW_PORTFOLIO" v-on:toggle="limitToVisible = !limitToVisible" />

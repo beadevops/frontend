@@ -45,6 +45,7 @@ import { ACCESS_MANAGEMENT, SYSTEM_CONFIGURATION } from "../../shared/permission
         this.$root.$emit('bv::toggle::collapse', this.getMenuFromRoute());
       }
     },
+    
     data() {
       return {
         menu: [
@@ -53,11 +54,11 @@ import { ACCESS_MANAGEMENT, SYSTEM_CONFIGURATION } from "../../shared/permission
             id: "configuration",
             permission: SYSTEM_CONFIGURATION,
             children: [
-              {
-                component: 'General',
-                name: this.$t('admin.general'),
-                route: "configuration/general"
-              },
+              // {
+              //   component: 'General',
+              //   name: this.$t('admin.general'),
+              //   route: "configuration/general"
+              // },
               {
                 component: 'BomFormats',
                 name: this.$t('admin.bom_formats'),
@@ -73,16 +74,16 @@ import { ACCESS_MANAGEMENT, SYSTEM_CONFIGURATION } from "../../shared/permission
                 name: this.$t('admin.internal_components'),
                 route: "configuration/internalComponents"
               },
-              {
-                component: 'TaskScheduler',
-                name: this.$t('admin.task_scheduler'),
-                route: "configuration/taskScheduler"
-              },
-              {
-                component: 'Search',
-                name: this.$t('message.search'),
-                route: "configuration/search"
-              }
+              // {
+              //   component: 'TaskScheduler',
+              //   name: this.$t('admin.task_scheduler'),
+              //   route: "configuration/taskScheduler"
+              // },
+              // {
+              //   component: 'Search',
+              //   name: this.$t('message.search'),
+              //   route: "configuration/search"
+              // }
             ]
           },
           {
@@ -90,26 +91,26 @@ import { ACCESS_MANAGEMENT, SYSTEM_CONFIGURATION } from "../../shared/permission
             id: "analyzers",
             permission: SYSTEM_CONFIGURATION,
             children: [
-              {
-                component: "InternalAnalyzer",
-                name: this.$t('admin.internal_analyzer'),
-                route: "analyzers/internal"
-              },
+              // {
+              //   component: "InternalAnalyzer",
+              //   name: this.$t('admin.internal_analyzer'),
+              //   route: "analyzers/internal"
+              // },
               {
                 component: "OssIndexAnalyzer",
                 name: this.$t('admin.oss_index'),
                 route: "analyzers/oss"
               },
-              {
-                component: "VulnDbAnalyzer",
-                name: this.$t('admin.vulndb'),
-                route: "analyzers/vulnDB"
-              },
-              {
-                component: "SnykAnalyzer",
-                name: this.$t('admin.snyk'),
-                route: "analyzers/snyk"
-              }
+              // {
+              //   component: "VulnDbAnalyzer",
+              //   name: this.$t('admin.vulndb'),
+              //   route: "analyzers/vulnDB"
+              // },
+              // {
+              //   component: "SnykAnalyzer",
+              //   name: this.$t('admin.snyk'),
+              //   route: "analyzers/snyk"
+              // }
             ]
           },
           {
@@ -122,16 +123,16 @@ import { ACCESS_MANAGEMENT, SYSTEM_CONFIGURATION } from "../../shared/permission
                 name: this.$t('admin.national_vulnerability_database'),
                 route: "vulnerabilitySources/nvd"
               },
-              {
-                component: "VulnSourceGitHubAdvisories",
-                name: this.$t('admin.github_advisories'),
-                route: "vulnerabilitySources/github"
-              },
-              {
-                component: "VulnSourceOSVAdvisories",
-                name: this.$t('admin.osv_advisories'),
-                route: "vulnerabilitySources/osv"
-              }
+              // {
+              //   component: "VulnSourceGitHubAdvisories",
+              //   name: this.$t('admin.github_advisories'),
+              //   route: "vulnerabilitySources/github"
+              // },
+              // {
+              //   component: "VulnSourceOSVAdvisories",
+              //   name: this.$t('admin.osv_advisories'),
+              //   route: "vulnerabilitySources/osv"
+              // }
             ]
           },
           {
@@ -139,36 +140,36 @@ import { ACCESS_MANAGEMENT, SYSTEM_CONFIGURATION } from "../../shared/permission
             id: "repositories",
             permission: SYSTEM_CONFIGURATION,
             children: [
-              {
-                component: "Cargo",
-                name: this.$t('admin.cargo'),
-                route: "repositories/cargo"
-              },
-              {
-                component: "Composer",
-                name: this.$t('admin.composer'),
-                route: "repositories/composer"
-              },
-              {
-                component: "Cpan",
-                name: this.$t('admin.cpan'),
-                route: "repositories/cpan"
-              },
-              {
-                component: "Gem",
-                name: this.$t('admin.gem'),
-                route: "repositories/gem"
-              },
-              {
-                component: "GoModules",
-                name: this.$t('admin.go_modules'),
-                route: "repositories/goModules"
-              },
-              {
-                component: "Hex",
-                name: this.$t('admin.hex'),
-                route: "repositories/hex"
-              },
+              // {
+              //   component: "Cargo",
+              //   name: this.$t('admin.cargo'),
+              //   route: "repositories/cargo"
+              // },
+              // {
+              //   component: "Composer",
+              //   name: this.$t('admin.composer'),
+              //   route: "repositories/composer"
+              // },
+              // {
+              //   component: "Cpan",
+              //   name: this.$t('admin.cpan'),
+              //   route: "repositories/cpan"
+              // },
+              // {
+              //   component: "Gem",
+              //   name: this.$t('admin.gem'),
+              //   route: "repositories/gem"
+              // },
+              // {
+              //   component: "GoModules",
+              //   name: this.$t('admin.go_modules'),
+              //   route: "repositories/goModules"
+              // },
+              // {
+              //   component: "Hex",
+              //   name: this.$t('admin.hex'),
+              //   route: "repositories/hex"
+              // },
               {
                 component: "Maven",
                 name: this.$t('admin.maven'),
@@ -179,11 +180,11 @@ import { ACCESS_MANAGEMENT, SYSTEM_CONFIGURATION } from "../../shared/permission
                 name: this.$t('admin.npm'),
                 route: "repositories/npm"
               },
-              {
-                component: "Nuget",
-                name: this.$t('admin.nuget'),
-                route: "repositories/nuget"
-              },
+              // {
+              //   component: "Nuget",
+              //   name: this.$t('admin.nuget'),
+              //   route: "repositories/nuget"
+              // },
               {
                 component: "Python",
                 name: this.$t('admin.python'),
@@ -208,33 +209,33 @@ import { ACCESS_MANAGEMENT, SYSTEM_CONFIGURATION } from "../../shared/permission
               }
             ]
           },
-          {
-            name: this.$t('admin.integrations'),
-            id: "integrations",
-            permission: SYSTEM_CONFIGURATION,
-            children: [
-              {
-                component: "DefectDojo",
-                name: this.$t('admin.defectdojo'),
-                route: "integrations/defectDojo"
-              },
-              {
-                component: "FortifySsc",
-                name: this.$t('admin.fortify_ssc'),
-                route: "integrations/fortifySSC"
-              },
-              {
-                component: 'Jira',
-                name: this.$t('admin.jira'),
-                route: "integrations/jira"
-              },
-              {
-                component: "KennaSecurity",
-                name: this.$t('admin.kenna_security'),
-                route: "integrations/kennaSecurity"
-              }
-            ]
-          },
+          // {
+          //   name: this.$t('admin.integrations'),
+          //   id: "integrations",
+          //   permission: SYSTEM_CONFIGURATION,
+          //   children: [
+          //     // {
+          //     //   component: "DefectDojo",
+          //     //   name: this.$t('admin.defectdojo'),
+          //     //   route: "integrations/defectDojo"
+          //     // },
+          //     // {
+          //     //   component: "FortifySsc",
+          //     //   name: this.$t('admin.fortify_ssc'),
+          //     //   route: "integrations/fortifySSC"
+          //     // },
+          //     {
+          //       component: 'Jira',
+          //       name: this.$t('admin.jira'),
+          //       route: "integrations/jira"
+          //     },
+          //     // {
+          //     //   component: "KennaSecurity",
+          //     //   name: this.$t('admin.kenna_security'),
+          //     //   route: "integrations/kennaSecurity"
+          //     // }
+          //   ]
+          // },
           {
             name: this.$t('admin.access_management'),
             id: "accessmanagement",
@@ -250,16 +251,16 @@ import { ACCESS_MANAGEMENT, SYSTEM_CONFIGURATION } from "../../shared/permission
                 name: this.$t('admin.managed_users'),
                 route: "accessManagement/managedUsers"
               },
-              {
-                component: "OidcUsers",
-                name: this.$t('admin.oidc_users'),
-                route: "accessManagement/oidcUsers"
-              },
-              {
-                component: "OidcGroups",
-                name: this.$t('admin.oidc_groups'),
-                route: "accessManagement/oidcGroups"
-              },
+              // {
+              //   component: "OidcUsers",
+              //   name: this.$t('admin.oidc_users'),
+              //   route: "accessManagement/oidcUsers"
+              // },
+              // {
+              //   component: "OidcGroups",
+              //   name: this.$t('admin.oidc_groups'),
+              //   route: "accessManagement/oidcGroups"
+              // },
               {
                 component: "Teams",
                 name: this.$t('admin.teams'),

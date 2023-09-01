@@ -6,7 +6,7 @@
         <span class="fa fa-plus"></span> {{ $t('message.create_project') }}
       </b-button>
       <c-switch style="margin-left:1rem; margin-right:.5rem" id="showInactiveProjects" color="primary" v-model="showInactiveProjects" label v-bind="labelIcon" /><span class="text-muted">{{ $t('message.show_inactive_projects') }}</span>
-      <c-switch @click.native="saveViewState" style="margin-left:1rem; margin-right:.5rem" id="showFlatView" color="primary" v-model="showFlatView" label v-bind="labelIcon" :disabled="isSearching" v-b-tooltip.hover :title="$t('message.switch_view')" /><span class="text-muted">{{ $t('message.show_flat_view') }}</span>
+      <!-- <c-switch @click.native="saveViewState" style="margin-left:1rem; margin-right:.5rem" id="showFlatView" color="primary" v-model="showFlatView" label v-bind="labelIcon" :disabled="isSearching" v-b-tooltip.hover :title="$t('message.switch_view')" /><span class="text-muted">{{ $t('message.show_flat_view') }}</span> -->
     </div>
     <bootstrap-table
       ref="table"

@@ -86,11 +86,12 @@
               if (Object.prototype.hasOwnProperty.call(row, "repositoryMeta") && Object.prototype.hasOwnProperty.call(row.repositoryMeta, "latestVersion")) {
                 row.latestVersion = row.repositoryMeta.latestVersion;
                 if (row.repositoryMeta.latestVersion !== row.version) {
-                  return '<span style="float:right" data-toggle="tooltip" data-placement="bottom" title="Risk: Outdated component. Current version is: '+ xssFilters.inHTMLData(row.repositoryMeta.latestVersion) + '"><i class="fa fa-exclamation-triangle status-warning" aria-hidden="true"></i></span> ' + xssFilters.inHTMLData(row.version);
+                  return '<span style="float:right" data-toggle="tooltip" data-placement="bottom" title="注意：组件不是最新版本，最新版本为： '+ xssFilters.inHTMLData(row.repositoryMeta.latestVersion) + '"><i class="fa fa-exclamation-triangle status-warning" aria-hidden="true"></i></span> ' + xssFilters.inHTMLData(row.version);
                 } else {
-                  return '<span style="float:right" data-toggle="tooltip" data-placement="bottom" title="Component version is the latest available from the configured repositories"><i class="fa fa-exclamation-triangle status-passed" aria-hidden="true"></i></span> ' + xssFilters.inHTMLData(row.version);
+                  return '<span style="float:right" data-toggle="tooltip" data-placement="bottom" title="当前组件为最新版本"><i class="fa fa-exclamation-triangle status-passed" aria-hidden="true"></i></span> ' + xssFilters.inHTMLData(row.version);
                 }
               } else {
+                return '<span style="float:right" data-toggle="tooltip" data-placement="bottom" title="注意：有可能是虚假仿冒组件！如果是内部组件，可前往“配置-内部组件”处添加信任组件"><i class="fa fa-exclamation-triangle status-failed" aria-hidden="true"></i></span> ' + xssFilters.inHTMLData(row.version);
                 return xssFilters.inHTMLData(common.valueWithDefault(value, ""));
               }
             }

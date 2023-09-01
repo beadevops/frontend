@@ -9,7 +9,7 @@
       />
       {{$t('admin.analyzer_ossindex_enable')}}
       <br/>
-      <c-switch
+      <!-- <c-switch
         :disabled="!this.scannerEnabled"
         id="aliasSyncEnabled"
         color="primary"
@@ -17,9 +17,9 @@
         label
         v-bind="labelIcon"
         :title="$t('admin.vulnsource_alias_sync_enable_tooltip')"
-      />
-      {{$t('admin.vulnsource_alias_sync_enable')}}
-      <b-validated-input-group-form-input
+      /> -->
+      <!-- {{$t('admin.vulnsource_alias_sync_enable')}} -->
+      <!-- <b-validated-input-group-form-input
         id="ossindex-username"
         :label="$t('admin.registered_email_address')"
         input-group-size="mb-3"
@@ -27,7 +27,7 @@
         type="email"
         v-model="username"
         lazy="true"
-      />
+      /> -->
       <b-validated-input-group-form-input
         id="ossindex-apitoken"
         :label="$t('admin.api_token')"
