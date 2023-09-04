@@ -39,7 +39,8 @@
   export default {
     props: {
       policy: Object,
-      condition: Object
+      condition: Object,
+      isPolicy: Boolean
     },
     components: {
       ActionableListGroupItem,
@@ -52,6 +53,11 @@
         this.subjectChanged();
         this.operator = this.condition.operator;
         this.value = this.condition.value;
+      }
+      if (this.isPolicy) {
+        this.subjects = [
+          {value: 'LICENSE', text: this.$t('message.license')},
+        ]
       }
     },
     data() {

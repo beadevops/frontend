@@ -1,6 +1,5 @@
 <template>
-  <b-modal id="createPolicyModal" @hide="resetValues()" size="md" hide-header-close no-stacking :title="$t('message.create_policy')">
-
+  <b-modal id="createPolicyModal" @hide="resetValues()" size="md" hide-header-close no-stacking :title="'创建' + (isBlack ? '黑名单' : '政策')">
     <b-validated-input-group-form-input id="identifier"
                                         :label="this.$t('message.name')"
                                         input-group-size="mb-3"
@@ -19,6 +18,12 @@
   import BValidatedInputGroupFormInput from "../../forms/BValidatedInputGroupFormInput";
 
   export default {
+    props: {
+      isBlack: {
+        type: Boolean,
+        default: false
+      }
+    },
     name: "createPolicyModal",
     mixins: [permissionsMixin],
     components: {

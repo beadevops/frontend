@@ -2,7 +2,10 @@
   <div class="animated fadeIn" v-permission="'POLICY_MANAGEMENT'">
     <div id="policiesToolbar" class="bs-table-custom-toolbar">
       <b-button size="md" variant="outline-primary" v-b-modal.createPolicyModal v-permission="PERMISSIONS.POLICY_MANAGEMENT">
-        <span class="fa fa-plus"></span> {{ $t('message.create_policy') }}
+        <span class="fa fa-plus"></span>创建{{isBlack ? '黑名单' : '政策'}}
+      </b-button>
+      <b-button size="md" @click="switchType" variant="outline-primary" v-permission="PERMISSIONS.POLICY_MANAGEMENT">
+        <span class="fa fa-plus"></span>  {{isBlack ? '政策' : '许可证黑名单'}}
       </b-button>
     </div>
     <bootstrap-table
@@ -11,7 +14,7 @@
       :data="data"
       :options="options"
       @on-load-success="tableLoaded"/>
-    <create-policy-modal v-on:refreshTable="refreshTable" />
+    <create-policy-modal :isBlack="isBlack" v-on:refreshTable="refreshTable" />
   </div>
 </template>
 
@@ -33,6 +36,12 @@
   import { Switch as cSwitch } from '@coreui/vue';
 
   export default {
+    props: {
+      isBlack: {
+        type: Boolean,
+        default: false
+      }
+    },
     mixins: [permissionsMixin, bootstrapTableMixin],
     components: {
       CreatePolicyModal
@@ -51,11 +60,26 @@
       EventBus.$off('policyManagement:policies:rowDeleted');
     },
     methods: {
-      tableLoaded: function(data) {
+      switchType () {
+        this.isBlackP = !this.isBlack
+        this.$emit('switchType', this.isBlackP)
+        this.dataList.forEach((item) => {
+          this.$set(item, 'isPolicy',  this.isBlackP )
+        })
+        this.tableLoaded(this.dataList, '1')
+      },
+      tableLoaded: function(data, type) {
+        data.forEach((item) => {
+          this.$set(item, 'isPolicy', this.isBlack)
+        })
         if (data && Object.prototype.hasOwnProperty.call(data, "total")) {
           this.$emit('total', data.total);
         } else {
           this.$emit('total', '?');
+        }
+        this.dataList = data
+        if (type === '1') {
+          this.$refs.table.refresh()
         }
       },
       refreshTable: function() {
@@ -66,6 +90,8 @@
     },
     data() {
       return {
+        dataList: [],
+        isBlackP: true,
         columns: [
           {
             title: this.$t('message.name'),
@@ -106,7 +132,7 @@
                         required="true" type="text" v-model="name" lazy="true" autofocus="true"
                         v-debounce:750ms="updatePolicy" :debounce-events="'keyup'" />
                   </b-col>
-                  <b-col sm="3">
+                  <b-col sm="3" v-if="!isPolicy">
                     <b-input-group-form-select id="input-repository-type" required="true"
                                v-model="operator" :options="operators"
                                :label="$t('message.operator')" />
@@ -118,11 +144,12 @@
                   </b-col>
                 </b-row>
                 <b-row class="expanded-row">
+
                   <b-col sm="12">
                     <b-form-group :label="this.$t('message.conditions')">
                       <div class="list-group">
                         <span v-for="(condition, conditionIndex) in conditions">
-                          <policy-condition :policy="policy" :condition="condition" v-on:conditionRemoved="removeCondition(condition, conditionIndex, index)" />
+                          <policy-condition :isPolicy="isPolicy" :policy="policy" :condition="condition" v-on:conditionRemoved="removeCondition(condition, conditionIndex, index)" />
                         </span>
                         <actionable-list-group-item :add-icon="true" v-on:actionClicked="addCondition" />
                       </div>
@@ -139,7 +166,7 @@
                       <c-switch id="isNotifyChildrenEnabled" color="primary" v-model="includeChildren" label v-bind="labelIcon"/>
                       {{ $t('admin.include_children') }}
                     </div>
-                    <!--  
+                    <!--
                     <b-form-group v-if="limitToVisible === true" id="tagLimitsList" :label="this.$t('admin.limit_to_tags')">
                       <div class="list-group">
                         <span v-for="tag in tags">
@@ -152,7 +179,7 @@
                     <div style="text-align:right">
                       <b-toggleable-display-button variant="outline-primary" :label="$t('admin.limit_to')"
                           v-permission="PERMISSIONS.VIEW_PORTFOLIO" v-on:toggle="limitToVisible = !limitToVisible" />
-                       <b-button variant="outline-danger" @click="deletePolicy">{{ $t('message.delete_policy') }}</b-button>
+                       <b-button variant="outline-danger" @click="deletePolicy">{{ !isPolicy? '删除策略' : '删除黑名单'  }}</b-button>
                     </div>
                   </b-col>
                 </b-row>
@@ -173,6 +200,7 @@
               },
               data() {
                 return {
+                  isPolicy: row.isPolicy,
                   policy: row,
                   name: row.name,
                   operator: row.operator,
