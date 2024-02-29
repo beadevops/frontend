@@ -8,7 +8,9 @@ module.exports = {
   // Relative paths cannot be supported. Research by @nscur0 - https://owasp.slack.com/archives/CTC03GX9S/p1608400149085400
   publicPath: "/",
   devServer: {
-    proxy: { "/api": { target: "https://ebanktest.hkbea.com.cn/" } }
+   // 本地开发测试时可指定端口
+   // port:8082,
+    proxy: { "/api": { target: "http://127.0.0.1:8085" } }
   },
   configureWebpack: {
     plugins: [
